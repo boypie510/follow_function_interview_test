@@ -12,5 +12,7 @@ class TeachersController < ApplicationController
 
   def find_teacher
     @teacher = Teacher.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Teacher not found' }, status: :not_found
   end
 end
