@@ -25,5 +25,15 @@ RSpec.describe 'Students', type: :request do
         expect(response.body).to include('Teacher not found')
       end
     end
+
+    context 'when the student does not exist' do
+      it 'returns a not found error' do
+        not_exist_student_id = 9999
+        post "/students/#{not_exist_student_id}/follow", params: { teacher_id: teacher.id }
+
+        expect(response).to have_http_status(:not_found)
+        expect(response.body).to include('Student not found')
+      end
+    end
   end
 end
