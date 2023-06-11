@@ -2,17 +2,16 @@
 
 # handle /students endpoint
 class StudentsController < ApplicationController
-  before_action :find_teacher, only: %i[follow unfollow]
-  before_action :find_student, only: %i[follow unfollow]
+  before_action :find_teacher, :find_student, only: %i[follow unfollow]
 
   def follow
     @teacher.followed_students << @student
-    render json: { message: 'Teacher successfully followed the student' }, status: :ok
+    render json: { message: 'Teacher successfully followed the student' }
   end
 
   def unfollow
     @teacher.followed_students.delete(@student)
-    render json: { message: 'Teacher successfully unfollowed the student' }, status: :ok
+    render json: { message: 'Teacher successfully unfollowed the student' }
   end
 
   private
