@@ -9,4 +9,10 @@ Rails.application.routes.draw do
       delete :unfollow
     end
   end
+
+  resources :teachers, only: [] do
+    member do
+      get :followed_students
+    end
+  end
 end
