@@ -36,4 +36,16 @@ RSpec.describe 'Students', type: :request do
       end
     end
   end
+
+  describe 'DELETE /unfollow' do
+    context 'teacher already follow the student' do
+      before { teacher.followed_students << student }
+      it 'teacher unfollow the student' do
+        delete "/students/#{student.id}/unfollow", params: { teacher_id: teacher.id }
+
+        expect(response).to have_http_status(:ok)
+        expect(teacher.followed_students.ids).not_to include(student.id)
+      end
+    end
+  end
 end
