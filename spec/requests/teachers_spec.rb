@@ -14,18 +14,15 @@ RSpec.describe 'Teachers', type: :request do
         let(:expected_result) do
           {
             students: [
-              {
-                id: student1.id,
-                name: student1.name
-              },
-              {
-                id: student2.id,
-                name: student2.name
-              }
-            ]
+              build_student_hash(student1),
+              build_student_hash(student2)
+            ],
+            current_page: 1,
+            total_pages: 1,
+            total_count: 2
           }.as_json
         end
-        it 'list teacher followed students' do
+        it 'list teacher paginated followed students' do
           get "/teachers/#{teacher.id}/followed_students"
           json_body = JSON.parse(response.body)
 
@@ -45,4 +42,11 @@ RSpec.describe 'Teachers', type: :request do
       end
     end
   end
+end
+
+def build_student_hash(student)
+  {
+    id: student.id,
+    name: student.name
+  }
 end
