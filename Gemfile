@@ -67,3 +67,6 @@ gem 'rspec-rails', '~> 6.0'
 
 # For Coding Styling
 gem 'rubocop', '~> 1.52', require: false
+
+# Pagination
+gem 'kaminari'
