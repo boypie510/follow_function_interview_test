@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :students, only: [] do
     member do
       post :follow
+      delete :unfollow
     end
   end
 end
