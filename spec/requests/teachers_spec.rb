@@ -37,7 +37,7 @@ RSpec.describe 'Teachers', type: :request do
           get "/teachers/#{not_exist_teacher_id}/followed_students"
 
           expect(response).to have_http_status(:not_found)
-          expect(response.body).to include('Teacher not found')
+          expect(response.body).to include(I18n.t('teachers.teacher_not_found'))
         end
       end
     end

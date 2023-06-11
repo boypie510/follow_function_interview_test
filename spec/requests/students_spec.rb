@@ -22,7 +22,7 @@ RSpec.describe 'Students', type: :request do
         post "/students/#{student.id}/follow", params: { teacher_id: not_exist_teacher_id }
 
         expect(response).to have_http_status(:not_found)
-        expect(response.body).to include('Teacher not found')
+        expect(response.body).to include(I18n.t('students.teacher_not_found'))
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe 'Students', type: :request do
         post "/students/#{not_exist_student_id}/follow", params: { teacher_id: teacher.id }
 
         expect(response).to have_http_status(:not_found)
-        expect(response.body).to include('Student not found')
+        expect(response.body).to include(I18n.t('students.student_not_found'))
       end
     end
   end
@@ -55,7 +55,7 @@ RSpec.describe 'Students', type: :request do
           delete "/students/#{student.id}/unfollow", params: { teacher_id: not_exist_teacher_id }
 
           expect(response).to have_http_status(:not_found)
-          expect(response.body).to include('Teacher not found')
+          expect(response.body).to include(I18n.t('students.teacher_not_found'))
         end
       end
 
@@ -65,7 +65,7 @@ RSpec.describe 'Students', type: :request do
           delete "/students/#{not_exist_student_id}/unfollow", params: { teacher_id: teacher.id }
 
           expect(response).to have_http_status(:not_found)
-          expect(response.body).to include('Student not found')
+          expect(response.body).to include(I18n.t('students.student_not_found'))
         end
       end
     end

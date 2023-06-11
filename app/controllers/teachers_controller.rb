@@ -19,7 +19,7 @@ class TeachersController < ApplicationController
   def find_teacher
     @teacher = Teacher.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Teacher not found' }, status: :not_found
+    render json: { error: t('.teacher_not_found') }, status: :not_found
   end
 
   def paginate_followed_students
