@@ -5,6 +5,8 @@ class StudentsController < ApplicationController
   def follow
     teacher.followed_students << student
     render json: { message: 'Teacher successfully followed the student' }, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Teacher not found' }, status: :not_found
   end
 
   private
