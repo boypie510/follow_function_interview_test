@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Data Factory for writing tests 
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -60,3 +62,6 @@ gem 'net-http', '~> 0.3.0'
 
 gem 'rspec', '~> 3.12'
 gem 'rspec-rails', '~> 6.0'
+
+# For Coding Styling
+gem 'rubocop', '~> 1.52', require: false
