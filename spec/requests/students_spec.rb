@@ -11,8 +11,8 @@ RSpec.describe 'Students', type: :request do
       it 'teacher follow the student' do
         post "/students/#{student.id}/follow", params: { teacher_id: teacher.id }
 
-        # expect(teacher.students).to include(student)
         expect(response).to have_http_status(:ok)
+        expect(teacher.followed_students).to include(student)
       end
     end
   end
